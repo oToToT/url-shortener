@@ -3,6 +3,8 @@ const redirect = require('./src/app.js').redirect;
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
 app.use('/', redirect);
 
 app.listen(8787, function(){
