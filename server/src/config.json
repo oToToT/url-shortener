@@ -1,7 +1,0 @@
-{
-    "gcp_projectId": "url-shorten-dve-tw",
-    "gcp_keyFilename": "url-shorten-owner-key.json",
-    "host_addr": "https://r.dve.tw",
-    "url_min_length": 3,
-    "url_base": "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789"
-}
