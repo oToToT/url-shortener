@@ -6,9 +6,11 @@ branches:
         - master
 cache: npm
 install:
-    - npm install --prefix client && npm install -g gulp-cli
+    - npm install --prefix client
+    - npm install -g gulp-cli
 script:
     - gulp --cwd client
+    - echo "r.dve.tw" > client/build/CNAME
 deploy:
     provider: pages
     skip_cleanup: true
