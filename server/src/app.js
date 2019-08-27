@@ -24,7 +24,9 @@ async function generate_entry() {
 }
 
 async function create_shorten_url(req, res) {
-    console.log(req.body);
+    if(typeof req.body.url === 'undefined') {
+        return res.status(510).send({'error': 'url field required'});
+    }
     // from https://stackoverflow.com/a/49283749/4275047
     const isUrl = string => {
         try { return Boolean(new URL(string)); }
@@ -70,13 +72,15 @@ async function redirect_shorten_url(req, res) {
 
 }
 
-exports.redirect = async (req, res) => {
+exports.handler = async (req, res) => {
+
+    res.set('Access-Control-Allow-Origin', "*");
+    res.set('Access-Control-Allow-Methods', 'GET, POST, HEAD')
 
     if (req.method == 'POST') {
         return await create_shorten_url(req, res);
     }
     if (req.method == 'GET' || req.method == 'HEAD') {
-//        res.status(200).send('<form method="POST" action="/"><input type="text" name="url"><input type="submit"></form>')
         return await redirect_shorten_url(req, res);
     }
     res.status(405).end();

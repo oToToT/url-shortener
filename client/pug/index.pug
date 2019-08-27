@@ -1,0 +1,47 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Indie+Flower|Noto+Sans+TC&display=swap')
+        link(rel='stylesheet', href='/css/index.css')
+        title Dve.Tw
+    body 
+        .container-fluid.d-flex.w-100.h-100.p-3.mx-auto.flex-column
+            nav.navbar.navbar-dark.mb-auto
+                .container
+                    a.navbar-brand.h1.mb-0(href='/') Dve.Tw
+                    button#recent.btn.btn-outline-warning 近期紀錄
+            main.inner(role='main')
+                h1 讓網路世界更簡單！
+                p.mb-3
+                    | 網址太長很難記？
+                    br
+                    | 想要一個不追蹤使用者的縮網址服務？
+                    br
+                    | 來試試
+                    a(href="https://r.dve.tw/") Dve.Tw
+                    | 吧，一個極簡的縮網址服務
+                .input-group.input-group-lg
+                    input#url.form-control(type='text', placeholder='https://ototot.tw/')
+                    .input-group-append
+                        button#shorten.btn.btn-outline-success 縮個！
+            footer.mt-auto
+                .inner
+                    p
+                        | Developed By 
+                    a(href='https://github.com/oToToT') @oToToT
+                    | , view our 
+                    a(href='/privacy.html') Privacy Policy
+
+        div(style={"display": "none"})
+            #modal.swal-tex(style={"text-align":"center","margin":"0"})
+                .input-group
+                    input#shorten_url.form-control(type='text', readonly)
+                    .input-group-append
+                        button#copy.btn.btn-primary(data-clipboard-target="#shorten_url") 複製！
+                img#qr_code(width=200,height=200)
+                p(style={"text-overflow": "ellipsis","overflow": "hidden", "white-space": "nowrap"})
+                    | 原網址：
+                    a#original_url
+        script(src='/js/index.min.js')
