@@ -1,12 +1,13 @@
 const { src, dest, parallel } = require('gulp');
 const pug = require('gulp-pug');
 const less = require('gulp-less');
+const webpack = require('webpack-stream');
+const named = require('vinyl-named');
 const babel = require('gulp-babel');
 const minifyCSS = require('gulp-csso');
 const concat = require('gulp-concat');
 const uglifyJS = require('gulp-uglify');
 const minifyHTML = require('gulp-htmlmin');
-const jsImport = require('gulp-js-import');
 const rename = require('gulp-rename');
 
 function html() {
@@ -24,8 +25,13 @@ function css() {
 }
 
 function js() {
-    return src(['javascript/*.js','!javascript/config*.js'])
-        .pipe(jsImport())
+    return src(['javascript/*.js', '!javascript/config.js'])
+        .pipe(babel({
+            presets: ['@babel/env'],
+            plugins: ['@babel/transform-runtime']
+        }))
+        .pipe(named())
+        .pipe(webpack({mode: 'production'}))
         .pipe(babel({
             presets: ['@babel/env']
         }))
