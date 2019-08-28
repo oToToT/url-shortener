@@ -28,27 +28,34 @@ function js() {
         .pipe(named())
         .pipe(webpack({
             mode: 'production',
-            module: {
-                rules: [
-                    {
-                        test: /\.js$/,
-                        loader: 'babel-loader',
-                        query: {
-                            presets: [
-                                [
-                                    '@babel/env',
-                                    {
-                                        "targets": "> 0.2%, not dead"
-                                    }
-                                ]
-                            ],
-                            plugins: ['@babel/transform-runtime']
-                        }
-                    }
-                ]
-            }
+            //module: {
+                //rules: [
+                    //{
+                        //test: /\.js$/,
+                        //loader: 'babel-loader',
+                        //query: {
+                            //presets: [
+                                //[
+                                    //'@babel/env',
+                                    //{
+                                        //targets: "> 0.25%, not dead"
+                                    //}
+                                //]
+                            //],
+                            //plugins: [
+                                //[
+                                    //'@babel/transform-runtime',
+                                    //{
+                                        //useESModules: true
+                                    //}
+                                //]
+                            //]
+                        //}
+                    //}
+                //]
+            //}
         }))
-        .pipe(uglifyJS())
+        //.pipe(uglifyJS())
         .pipe(rename(function(path){
             path.basename += ".min";
             path.extname = ".js";

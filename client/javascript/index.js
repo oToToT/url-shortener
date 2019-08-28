@@ -63,7 +63,7 @@ import { config } from './config.js'
                     let qr_code = document.getElementById("qr_code");
                     qr_code.src = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=L|1&chl=${encodeURIComponent(shorten_url.value)}`;
                     let modal = document.getElementById("modal");
-                  	shorten_button.classList.replace("btn-info", "btn-outline-success");
+                    shorten_button.classList.replace("btn-info", "btn-outline-success");
                     shorten_button.innerText = "縮個！";
                     shorten_button.removeAttribute("disabled");
                     await swal({
