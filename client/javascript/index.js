@@ -1,4 +1,4 @@
-import config from './config.js'
+@import './config.js'
 (function() {
     function main() {
         document.getElementById("shorten").addEventListener("click", async function() {
