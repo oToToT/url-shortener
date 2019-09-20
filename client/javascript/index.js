@@ -1,6 +1,10 @@
 import { config } from './config.js'
 (function() {
     function main() {
+        function bugReport() {
+            window.location = GITHUB_ISSUE_URL;
+        }
+        document.getElementById("bug_report").addEventListener("click", )
         document.getElementById("shorten").addEventListener("click", async function() {
             let shorten_button = document.getElementById("shorten");
             shorten_button.innerText = "生成中";
@@ -34,20 +38,18 @@ import { config } from './config.js'
                         }
                     ]
                 });
-                if (isBug) {
-                    // prompt and send with api
-                }
+                if (isBug) bugReport();
                 return;
             }
             try {
-                const result = await fetch(config.API_URL, {
+                const result = await axios(config.API_URL, {
                     method: "POST",
                     headers: {
                         Accept: "application/json",
                         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
                     },
-                    body: "url=" + encodeURIComponent(url)
-                }).then(response => response.json());
+                    data: { "url": url }
+                }).then(response => response.data);
                 if (result.error) {
                     shorten_button.classList.replace("btn-info", "btn-outline-success");
                     shorten_button.innerText = "縮個！";
@@ -71,7 +73,7 @@ import { config } from './config.js'
                         content: modal,
                         closeOnClickOutside: false
                     });
-                    url = "";
+                    document.getElementById("url").value = "";
                     clipboard.destroy();
                 }
             } catch (e) {
@@ -92,9 +94,7 @@ import { config } from './config.js'
                         }
                     ]
                 });
-                if (isBug) {
-                    // prompt and send with api
-                }
+                if (isBug) bugReport();
             }
         });
     }
