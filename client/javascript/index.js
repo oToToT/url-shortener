@@ -4,7 +4,7 @@ import { config } from './config.js'
         function bugReport() {
             window.location = GITHUB_ISSUE_URL;
         }
-        document.getElementById("bug_report").addEventListener("click", )
+        document.getElementById("bug_report").addEventListener("click", bugReport);
         document.getElementById("shorten").addEventListener("click", async function() {
             let shorten_button = document.getElementById("shorten");
             shorten_button.innerText = "生成中";
