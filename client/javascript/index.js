@@ -48,7 +48,7 @@ import { config } from './config.js'
                         Accept: "application/json",
                         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
                     },
-                    data: { "url": url }
+                    data: "url=" + encodeURIComponent(url)
                 }).then(response => response.data);
                 if (result.error) {
                     shorten_button.classList.replace("btn-info", "btn-outline-success");
