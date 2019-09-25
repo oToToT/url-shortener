@@ -2,7 +2,7 @@ import { config } from './config.js'
 (function() {
     function main() {
         function bugReport() {
-            window.location = GITHUB_ISSUE_URL;
+            window.location = config.GITHUB_ISSUE_URL;
         }
         document.getElementById("bug_report").addEventListener("click", bugReport);
         document.getElementById("shorten").addEventListener("click", async function() {
