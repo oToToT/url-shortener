@@ -83,6 +83,8 @@ export default {
         const shortenUrl = Config.BASE_URL + result.entry;
         const encodedShortenUrl = encodeURIComponent(shortenUrl);
 
+        let clipboard = null;
+
         await Swal.fire({
           title: '成功建立短網址',
           allowOutsideClick: false,
@@ -114,9 +116,12 @@ export default {
             document.getElementById('qr-code').src = 
               `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=L|1&chl=${encodedShortenUrl}`;
 
-            const clipboard = new ClipboardJS('#copy-button', {
-              target: () => shortenUrl,
+            clipboard = new ClipboardJS('#copy-button', {
+              text: () => shortenUrl,
             });
+          },
+          didDestroy: function() {
+            clipboard.destroy();
           }
         });
       } catch (e) {
