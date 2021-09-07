@@ -1,1 +1,29 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower|Noto+Sans+TC&amp;display=swap"><link rel="stylesheet" href="/css/index.css"><title>Dve.Tw</title></head><body><div class="container-fluid d-flex w-100 h-100 p-3 mx-auto flex-column"><nav class="navbar navbar-dark mb-auto"><div class="container"><a class="navbar-brand h1 mb-0" href="/">Dve.Tw</a><button class="btn btn-outline-warning" id="bug_report">回報Bug</button></div></nav><main class="inner" role="main"><h1>讓網路世界更簡單！</h1><p class="mb-3">網址太長很難記？<br>想要一個不追蹤使用者的縮網址服務？<br>來試試<a href="https://r.dve.tw/">Dve.Tw</a>吧，一個極簡的縮網址服務</p><div class="input-group input-group-lg"><input class="form-control" id="url" type="text" placeholder="https://ototot.tw/"><div class="input-group-append"><button class="btn btn-outline-success" id="shorten">縮個！</button></div></div></main><footer class="mt-auto"><div class="inner"><p>Developed By <a href="https://github.com/oToToT">@oToToT</a>, view our <a href="/privacy.html">Privacy Policy</a></p></div></footer></div><div style="display:none;"><div class="swal-tex" id="modal" style="text-align:center;margin:0;"><div class="input-group"><input class="form-control" id="shorten_url" type="text" readonly="readonly"><div class="input-group-append"><button class="btn btn-primary" id="copy" data-clipboard-target="#shorten_url">複製！</button></div></div><img id="qr_code" width="200" height="200"><p style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;">原網址：<a id="original_url"></a></p></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script><script src="https://unpkg.com/axios/dist/axios.min.js"></script><script src="/js/index.min.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <title>Dve.Tw</title>
+    <style>
+* {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+    </style>
+    <script type="module" crossorigin src="/assets/index.21c6478b.js"></script>
+    <link rel="modulepreload" href="/assets/vendor.bf217af8.js">
+    <link rel="stylesheet" href="/assets/index.5350d0de.css">
+    <script type="module">!function(){try{new Function("m","return import(m)")}catch(o){console.warn("vite: loading legacy build because dynamic import is unsupported, syntax error above should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}}();</script>
+  </head>
+  <body>
+    <div id="app"></div>
+    
+  
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule id="vite-legacy-polyfill" src="/assets/polyfills-legacy.cee8493d.js"></script>
+    <script nomodule id="vite-legacy-entry" data-src="/assets/index-legacy.c2b40062.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>
