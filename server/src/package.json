@@ -1,6 +1,6 @@
 {
   "name": "shorten-url",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "url shortener",
   "main": "app.js",
   "scripts": {
@@ -9,6 +9,7 @@
   "author": "oToToT",
   "license": "ISC",
   "dependencies": {
-    "@google-cloud/firestore": "^2.2.8"
+    "@google-cloud/firestore": "^4.15.1",
+    "secure-random": "^1.1.2"
   }
 }

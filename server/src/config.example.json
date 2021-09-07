@@ -1,0 +1,8 @@
+{
+    "GCP_PROJECT_ID": "GCP_PROJECT_ID",
+    "GCP_KEY_FILENAME": "GCP_KEY_FILENAME",
+    "HOST_ADDR": "http://127.0.0.1:8787",
+    "MAX_TRIES": 100,
+    "URL_MIN_LENGTH": 3,
+    "URL_BASE": "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+}

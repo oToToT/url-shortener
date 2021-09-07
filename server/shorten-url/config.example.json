@@ -1,7 +1,0 @@
-{
-    "gcp_projectId": "GCP_PROJECTID",
-    "gcp_keyFilename": "GCP_KEYFILENAME",
-    "host_addr": "HOST_ADDR",
-    "url_min_length": 3,
-    "url_base": "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789"
-}

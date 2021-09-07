@@ -1,8 +1,8 @@
 {
   "name": "shorten-url",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "url shortener",
-  "main": "server.js",
+  "main": "test_server.js",
   "dependencies": {
     "express": "^4.17.1"
   },
