@@ -1,12 +1,3 @@
-<script setup>
-import Footer from './components/Footer.vue';
-import NavBar from './components/NavBar.vue';
-import Config from './Config.js';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-import ClipboardJS from 'clipboard';
-</script>
-
 <template lang="pug">
 .container-fluid.d-flex.w-100.h-100.p-3.mx-auto.flex-column#index
   NavBar
@@ -18,7 +9,7 @@ import ClipboardJS from 'clipboard';
       | 想要一個不追蹤使用者的縮網址服務？
       br
       | 來試試
-      a(:href="Config.BASE_URL") Dve.Tw
+      a(:href="baseUrl") Dve.Tw
       | 吧，一個極簡的縮網址服務
     .input-group.input-group-lg
       input.form-control(type='text', placeholder='https://ototot.tw/', v-model="url")
@@ -28,9 +19,22 @@ import ClipboardJS from 'clipboard';
 </template>
 
 <script>
+import Footer from './components/Footer.vue';
+import NavBar from './components/NavBar.vue';
+import Config from './Config.js';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import ClipboardJS from 'clipboard';
+
+
 export default {
+  components: {
+    Footer,
+    NavBar,
+  },
   data() {
     return {
+      baseUrl: Config.BASE_URL,
       isGenerating: false,
       url: '',
     }
