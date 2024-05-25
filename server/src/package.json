@@ -9,7 +9,7 @@
   "author": "oToToT",
   "license": "ISC",
   "dependencies": {
-    "@google-cloud/firestore": "^6.6.1",
+    "@google-cloud/firestore": "^7.7.0",
     "secure-random": "^1.1.2"
   }
 }
