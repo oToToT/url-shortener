@@ -4,7 +4,7 @@
   "description": "url shortener",
   "main": "test_server.js",
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.22.1"
   },
   "devDependencies": {},
   "scripts": {
