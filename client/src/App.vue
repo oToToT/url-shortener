@@ -25,6 +25,7 @@ import Config from './Config.js';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import ClipboardJS from 'clipboard';
+import QRCode from 'qrcode';
 
 
 export default {
@@ -57,6 +58,7 @@ export default {
           showDenyButton: true,
           confirmButtonText: "OK",
           denyButtonText: "Bug回報",
+          theme: "bootstrap-5",
         });
         if (isBug.isDenied) {
           Config.reportBug();
@@ -100,7 +102,7 @@ export default {
                 <button class="btn btn-primary" id="copy-button">複製！</button>
               </div>
             </div>
-            <img width="200" height="200" id="qr-code">
+            <canvas width="200" height="200" id="qr-code"></canvas>
             <p style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap">
               原網址：
               <a id="original-url"></a>
@@ -113,8 +115,8 @@ export default {
 
             document.getElementById('shorten-url').value = shortenUrl;
 
-            document.getElementById('qr-code').src = 
-              `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=L|1&chl=${encodedShortenUrl}`;
+            const qrCodeImg = document.getElementById('qr-code');
+            QRCode.toCanvas(qrCodeImg, shortenUrl, { width: 200, margin: 1 });
 
             clipboard = new ClipboardJS('#copy-button', {
               text: () => shortenUrl,
@@ -134,6 +136,7 @@ export default {
           showDenyButton: true,
           confirmButtonText: "OK",
           denyButtonText: "Bug回報",
+          theme: "bootstrap-5",
         });
         if (isBug.isDenied) {
           Config.reportBug();
