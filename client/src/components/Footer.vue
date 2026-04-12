@@ -1,5 +1,5 @@
 <template lang="pug">
-footer.mt-auto
+footer.site-footer
   .inner
     p
       | Developed By 
@@ -9,7 +9,8 @@ footer.mt-auto
 </template>
 
 <style>
-footer {
+.site-footer {
   color: #777;
+  margin-top: auto;
 }
 </style>
