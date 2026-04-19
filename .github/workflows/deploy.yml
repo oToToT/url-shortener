@@ -3,9 +3,10 @@ name: Deploy Frontend
 on:
   push:
     branches: [ master ]
-    paths-ignore:
-      - 'server/**'
-      - README.md
+    paths:
+      - 'client/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
 
 jobs:
   build:
