@@ -1,11 +1,19 @@
 const Firestore = require('@google-cloud/firestore');
+const path = require('node:path');
 const secureRandom = require('secure-random');
-const config = require('./config.json');
+const config = require('./config');
 
-const db = new Firestore({
-    projectId: config.GCP_PROJECT_ID,
-    keyFilename: config.GCP_KEY_FILENAME,
-});
+const firestoreConfig = {};
+
+if (config.GCP_PROJECT_ID) {
+    firestoreConfig.projectId = config.GCP_PROJECT_ID;
+}
+
+if (config.GCP_KEY_FILENAME) {
+    firestoreConfig.keyFilename = path.resolve(__dirname, config.GCP_KEY_FILENAME);
+}
+
+const db = new Firestore(firestoreConfig);
 
 function randomString(base, length) {
     // base.length should <= 255

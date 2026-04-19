@@ -1,0 +1,69 @@
+name: Deploy Server
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'server/**'
+      - '.github/workflows/deploy-server.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Validate deploy configuration
+      env:
+        GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+        GCP_REGION: ${{ vars.GCP_REGION }}
+        GCF_FUNCTION_NAME: ${{ vars.GCF_FUNCTION_NAME }}
+        GCP_WORKLOAD_IDENTITY_PROVIDER: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+        GCP_SERVICE_ACCOUNT: ${{ vars.GCP_SERVICE_ACCOUNT }}
+        URL_SHORTENER_HOST_ADDR: ${{ vars.URL_SHORTENER_HOST_ADDR }}
+      run: |
+        for required_var in \
+          GCP_PROJECT_ID \
+          GCP_REGION \
+          GCF_FUNCTION_NAME \
+          GCP_WORKLOAD_IDENTITY_PROVIDER \
+          GCP_SERVICE_ACCOUNT \
+          URL_SHORTENER_HOST_ADDR
+        do
+          if [ -z "${!required_var}" ]; then
+            echo "Missing GitHub repository variable: ${required_var}" >&2
+            exit 1
+          fi
+        done
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v3
+      with:
+        project_id: ${{ vars.GCP_PROJECT_ID }}
+        workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+        service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+
+    - name: Deploy Cloud Function
+      uses: google-github-actions/deploy-cloud-functions@v4
+      with:
+        project_id: ${{ vars.GCP_PROJECT_ID }}
+        name: ${{ vars.GCF_FUNCTION_NAME }}
+        description: URL shortener backend
+        region: ${{ vars.GCP_REGION }}
+        runtime: nodejs22
+        source_dir: server/src
+        entry_point: handler
+        environment: GEN_2
+        environment_variables: |-
+          GCP_PROJECT_ID=${{ vars.GCP_PROJECT_ID }}
+          HOST_ADDR=${{ vars.URL_SHORTENER_HOST_ADDR }}
+          MAX_TRIES=${{ vars.URL_SHORTENER_MAX_TRIES || '100' }}
+          URL_MIN_LENGTH=${{ vars.URL_SHORTENER_MIN_LENGTH || '3' }}
+          URL_BASE=${{ vars.URL_SHORTENER_BASE || 'abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789' }}
