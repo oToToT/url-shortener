@@ -21,7 +21,6 @@
 import Footer from './components/Footer.vue';
 import NavBar from './components/NavBar.vue';
 import Config from './Config.js';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import ClipboardJS from 'clipboard';
 import QRCode from 'qrcode';
@@ -70,7 +69,7 @@ export default {
       }
 
       try {
-        const result = await axios(Config.API_URL, {
+        const result = await fetch(Config.API_URL, {
           method: "POST",
           headers: {
               Accept: "application/json",
