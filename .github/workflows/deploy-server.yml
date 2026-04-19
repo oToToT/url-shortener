@@ -63,7 +63,7 @@ jobs:
         environment: GEN_2
         environment_variables: |-
           GCP_PROJECT_ID=${{ vars.GCP_PROJECT_ID }}
-          HOST_ADDR=${{ vars.URL_SHORTENER_HOST_ADDR }}
+          HOST_ADDR=https://${{ vars.URL_SHORTENER_HOST_ADDR }}/
           MAX_TRIES=${{ vars.URL_SHORTENER_MAX_TRIES || '100' }}
           URL_MIN_LENGTH=${{ vars.URL_SHORTENER_MIN_LENGTH || '3' }}
           URL_BASE=${{ vars.URL_SHORTENER_BASE || 'abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789' }}
