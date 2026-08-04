@@ -69,14 +69,15 @@ export default {
       }
 
       try {
-        const result = await fetch(Config.API_URL, {
+        const response = await fetch(Config.API_URL, {
           method: "POST",
           headers: {
               Accept: "application/json",
               "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
           },
-          data: "url=" + encodeURIComponent(this.url)
-        }).then(response => response.data);
+          body: "url=" + encodeURIComponent(this.url)
+        });
+        const result = await response.json();
 
         if (result.error) {
           Swal.fire("錯誤", result.error, "error");
