@@ -1,22 +1,23 @@
 {
   "name": "url-shortener",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.5.32",
-    "qrcode": "^1.5.4"
+    "qrcode": "^1.5.4",
+    "vue": "^3.5.40"
   },
   "devDependencies": {
-    "@vitejs/plugin-legacy": "^8.0.1",
-    "@vitejs/plugin-vue": "^6.0.5",
+    "@vitejs/plugin-legacy": "^8.2.2",
+    "@vitejs/plugin-vue": "^6.0.8",
     "clipboard": "^2.0.11",
     "pug": "^3.0.4",
-    "sass": "^1.99.0",
-    "sweetalert2": "^11.26.24",
-    "vite": "^8.1.1"
+    "sass": "^1.102.0",
+    "sweetalert2": "^11.26.25",
+    "vite": "^8.2.0"
   }
 }
