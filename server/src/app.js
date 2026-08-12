@@ -3,6 +3,9 @@ const path = require('node:path');
 const secureRandom = require('secure-random');
 const config = require('./config');
 
+const hostUrl = new URL(config.HOST_ADDR);
+const allowedOrigin = hostUrl.origin;
+
 const firestoreConfig = {};
 
 if (config.GCP_PROJECT_ID) {
@@ -80,8 +83,12 @@ async function redirectShortenUrl(req, res) {
 
 exports.handler = async (req, res) => {
 
-    res.set('Access-Control-Allow-Origin', config.HOST_ADDR);
+    res.set('Access-Control-Allow-Origin', allowedOrigin);
     res.set('Access-Control-Allow-Methods', 'GET, POST, HEAD, OPTIONS');
+
+    if (req.method == 'OPTIONS') {
+        return res.status(204).end();
+    }
 
     if (req.method == 'POST') {
         return await createShortenUrl(req, res);
